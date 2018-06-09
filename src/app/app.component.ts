@@ -1,35 +1,26 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MessageService} from './services/message-service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   title = 'Jakis tytuł';
   selectedMessage: Message;
 
-  messages: Message[] = [
-    {
-      id: 1,
-      content: 'Wiadomość'
-    },
-    {
-      id: 2,
-      content: 'Wiadomość w tablicy 1',
-      author: 'Ja'
-    },
-    {
-      id: 3,
-      content: 'Wiadomość w tablicy 2'
-    }
-  ];
+  messages: Message[];
 
+  constructor(private messageServiece: MessageService) {
+  }
+  ngOnInit(): void {
+    this.messages = this.messageServiece.getMessages();
+  }
   private showMessage(message: Message): void {
     this.selectedMessage = message;
   }
-
 }
 
 export interface Message {

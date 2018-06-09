@@ -4,6 +4,7 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
 import { MessageDetailsComponent } from './message-details/message-details.component';
+import {MessageService} from './services/message-service';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,11 @@ import { MessageDetailsComponent } from './message-details/message-details.compo
     FormsModule,
     NgbModule.forRoot()
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    MessageService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
